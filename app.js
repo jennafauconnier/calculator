@@ -1,19 +1,28 @@
+// Récupere la valeur du button puis le parse pour l'additionner
+
 let num = document.getElementById("one");
 
-let stringInt = num.dataset.number
+function createNewNumber() {
+    let stringInt = num.dataset.number
+    let newNumb = parseInt(stringInt, 10)
+    return newNumb + 5;
+}
 
-let newNumb = parseInt(stringInt, 10)
+// console.log(createNewNumber());
 
-
-console.log(newNumb + 4)
+// Récuperer la valeur de tous les id et rendre en tableau
 
 let tagName = document.querySelectorAll('*[id]');
 
-let transformToArray = Array.from(tagName);
-
 function getBtnClicked() {
+    let transformToArray = Array.from(tagName);
     let getOnlyNumb = transformToArray.slice(1);
-    return getOnlyNumb;
+    let arrayOfNumb = getOnlyNumb;
+
+    arrayOfNumb.forEach(function(e) {
+        return arrayOfNumb.dataset.number
+    })
+    // return getOnlyNumb;
 }
 
 console.log(getBtnClicked());
