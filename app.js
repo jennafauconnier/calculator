@@ -1,28 +1,26 @@
-// Récupere la valeur du button puis le parse pour l'additionner
+let buttons = document.querySelectorAll('button');
 
-let num = document.getElementById("one");
+const display = document.querySelector('.display');
 
-function createNewNumber() {
-    let stringInt = num.dataset.number
-    let newNumb = parseInt(stringInt, 10)
-    return newNumb + 5;
-}
 
-// console.log(createNewNumber());
 
-// Récuperer la valeur de tous les id et rendre en tableau
+buttons.forEach(function(button) {
+    button.addEventListener('click', calculate);
+});
 
-let tagName = document.querySelectorAll('*[id]');
+function calculate(event) {
+    const clickedButtonValue = event.target.value;
 
-function getBtnClicked() {
-    let transformToArray = Array.from(tagName);
-    let getOnlyNumb = transformToArray.slice(1);
-    let arrayOfNumb = getOnlyNumb;
+    if(clickedButtonValue === '=') {
+        
+        if (display.value !== '') {
+            display.value = eval(display.value);
+        }
+    } else if (clickedButtonValue === 'C') {
+        display.value = '';
+    } else {
+        display.value += clickedButtonValue;
+    }
+};
 
-    arrayOfNumb.forEach(function(e) {
-        return arrayOfNumb.dataset.number
-    })
-    // return getOnlyNumb;
-}
-
-console.log(getBtnClicked());
+console.log(calculate())
